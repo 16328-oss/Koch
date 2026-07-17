@@ -127,6 +127,7 @@
             display: flex;
             gap: 4rem;
             flex: 1;
+            align-items: flex-start;
         }
 
         .profile-info {
@@ -149,16 +150,17 @@
             line-height: 1.6;
         }
 
+        /* ปรับปรุงระบบ Grid ป้องกันกล่องเบี้ยวและจัดเรียงแถวละ 3 กล่องอย่างสมดุล */
         .profile-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
             margin-bottom: 2rem;
         }
 
         .detail-card {
             background: var(--glass-bg);
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: 8px;
             border: 1px solid var(--glass-border);
             display: flex;
@@ -168,6 +170,7 @@
 
         .detail-card svg {
             color: var(--surgical-cyan);
+            flex-shrink: 0;
         }
 
         .detail-card small {
@@ -207,7 +210,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none; /* ซ่อนรูปจริงไว้ก่อนอัปโหลด */
+            display: none;
         }
 
         .upload-btn {
@@ -269,17 +272,30 @@
         }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            .profile-details {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .profile-section {
                 flex-direction: column;
+                align-items: center;
                 text-align: center;
             }
             .profile-info h1 {
                 font-size: 2.5rem;
             }
             .profile-image-zone {
-                order: -1; /* Move image above text on mobile */
+                order: -1;
                 margin-bottom: 2rem;
+            }
+            .profile-details {
+                grid-template-columns: 1fr;
+            }
+            blockquote {
+                text-align: left;
             }
         }
     </style>
@@ -299,17 +315,55 @@
             <a href="index.html" class="brand-mark">PORTFOLIO KOCH</a>
             <div class="status">
                 <span class="status-dot"></span>
-                <span>APPLICATION PROFILE</span>
+              
             </div>
         </header>
 
         <main class="profile-section">
             <div class="profile-info">
-                <div style="color: var(--surgical-cyan); font-family: 'Chakra Petch'; margin-bottom: 1rem;">02 / PROFILE</div>
+
                 <h1>ประวัติ<span>ส่วนตัว</span></h1>
                 <p>รู้จักตัวตน ความสนใจ และเหตุผลที่ทำให้ผมเลือกเดินบนเส้นทางสายแพทยศาสตร์</p>
 
-                 <div class="profile-image-zone">
+                <!-- กล่องข้อมูล 6 กล่อง จัดเรียงแบบ Grid 3x2 -->
+                <div class="profile-details">
+                    <div class="detail-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.243a2 2 0 0 1 3.2 0L15.4 8a2 2 0 0 0 1.6 1.6l3.757 1.9a2 2 0 0 1 0 3.2l-3.757 1.9a2 2 0 0 0-1.6 1.6l-1.9 3.757a2 2 0 0 1-3.2 0L8.6 16a2 2 0 0 0-1.6-1.6L3.243 12.4a2 2 0 0 1 0-3.2L6.6 8a2 2 0 0 0 1.6-1.6z"/></svg>
+                        <div><small>ชื่อ–นามสกุล</small><strong>กช ทองธรรมชาติ</strong></div>
+                    </div>
+                    <div class="detail-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-3 3"/><path d="M12 5a3 3 0 1 1 3 3"/><path d="M12 8a3 3 0 1 0-3 3"/><path d="M12 8a3 3 0 1 1 3 3"/><path d="M16 17.8L12 22 8 17.8a2 2 0 0 1-2.76-.7L4 15V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6l-1.24 1.1a2 2 0 0 1-2.76.7z"/><path d="M6 15v-3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><path d="M12 7v13"/></svg>
+                        <div><small>ชื่อเล่น</small><strong>กาฟิวส์</strong></div>
+                    </div>
+                    <div class="detail-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+                        <div><small>วันเกิด</small><strong>20 เมษายน 2551</strong></div>
+                    </div>
+                    <div class="detail-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <div><small>ศาสนา</small><strong>พุทธ</strong></div>
+                    </div>
+                    <div class="detail-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/></svg>
+                        <div><small>กรุ๊ปเลือด</small><strong>B</strong></div>
+                    </div>
+                    <div class="detail-card" style="border-color: var(--surgical-cyan);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        <div><small style="color: var(--surgical-cyan);">เป้าหมาย</small><strong>คณะแพทยศาสตร์</strong></div>
+                    </div>
+                </div>
+
+                <blockquote style="background: var(--glass-bg); padding: 1.5rem; border-left: 3px solid var(--surgical-cyan); font-style: italic; color: var(--text-muted); margin-top: 1.5rem;">
+                    <small style="display: block; margin-bottom: 0.5rem; color: var(--surgical-cyan); font-style: normal; font-weight: 600;">MY MOTIVATION</small>
+                    <p>
+                        ผมสนใจการทำงานของร่างกายมนุษย์และเชื่อว่าการเป็นแพทย์ไม่ใช่เพียงการรักษาโรค
+                        แต่คือการรับฟัง เข้าใจ และอยู่เคียงข้างผู้ป่วยในช่วงเวลาที่เขาต้องการความช่วยเหลือมากที่สุด
+                    </p>
+                </blockquote>
+            </div>
+
+            <!-- ย้ายโซนรูปภาพมาอยู่ฝั่งขวาขนานกับเนื้อหาอย่างเหมาะสม -->
+            <div class="profile-image-zone">
                 <div class="image-frame">
                     <img id="preview-profile" src="" alt="Profile Picture">
                     <label class="upload-btn">
@@ -319,44 +373,6 @@
                 </div>
             </div>
         </main>
-                
-                <div class="profile-details">
-                    <div class="detail-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="M9.9 4.243a2 2 0 0 1 3.2 0L15.4 8a2 2 0 0 0 1.6 1.6l3.757 1.9a2 2 0 0 1 0 3.2l-3.757 1.9a2 2 0 0 0-1.6 1.6l-1.9 3.757a2 2 0 0 1-3.2 0L8.6 16a2 2 0 0 0-1.6-1.6L3.243 12.4a2 2 0 0 1 0-3.2L6.6 8a2 2 0 0 0 1.6-1.6z"/></svg>
-                        <div><small>ชื่อ–นามสกุล</small><strong>กช ทองธรรมชาติ</strong></div>
-                    </div>
-                    <div class="detail-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain"><path d="M12 5a3 3 0 1 0-3 3"/><path d="M12 5a3 3 0 1 1 3 3"/><path d="M12 8a3 3 0 1 0-3 3"/><path d="M12 8a3 3 0 1 1 3 3"/><path d="M16 17.8L12 22 8 17.8a2 2 0 0 1-2.76-.7L4 15V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6l-1.24 1.1a2 2 0 0 1-2.76.7z"/><path d="M6 15v-3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><path d="M12 7v13"/></svg>
-                        <div><small>ชื่อเล่น</small><strong>กาฟิวส์</strong></div>
-                    </div>
-                    <div class="detail-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
-                        <div><small>วันเกิด</small><strong>20 เมษายน 2551 </strong></div>
-                    </div>
-                    <div class="detail-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M12 12.5a2.5 2.5 0 0 1 0 5 2.5 2.5 0 0 1 0-5Z"/><path d="M12 2v7.5s-2.5 1.75-2.5 5 2.5 5 2.5 5 2.5-1.75 2.5-5-2.5-5-2.5-5Z"/></svg>
-                        <div><small>ศาสนา</small><strong>พุทธ</strong></div>
-                    </div>
-                    <div class="detail-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-droplets"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.27-1.7-3.08A8.5 8.5 0 0 0 12 2c.8 0 1.5.2 2.2.5L16 4.1c.7.5 1.6 1.6 1.6 2.6A7 7 0 0 1 12 15c-1.7 0-3.1-.9-4-2.2"/><path d="M2.5 10.5c-.3-.3-.6-.6-.7-1-.3-.7-.2-1.6.4-2.2 1.4-1.4 4.3-1.2 5.8.2 1.1 1.1 1.3 2.5.7 3.7-.2.4-.5.7-.9.9"/><path d="M15.5 21.5c-.3-.3-.6-.6-.7-1-.3-.7-.2-1.6.4-2.2 1.4-1.4 4.3-1.2 5.8.2 1.1 1.1 1.3 2.5.7 3.7-.2.4-.5.7-.9.9"/></svg>
-                        <div><small>กรุ๊ปเลือด</small><strong>A</strong></div>
-                    </div>
-                    <div class="detail-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                        <div><small>เป้าหมาย</small><strong>คณะแพทยศาสตร์</strong></div>
-                    </div>
-                </div>
-
-                <blockquote style="background: var(--glass-bg); padding: 1.5rem; border-left: 3px solid var(--surgical-cyan); font-style: italic; color: var(--text-muted);">
-                    <small style="display: block; margin-bottom: 0.5rem; color: var(--surgical-cyan);">MY MOTIVATION</small>
-                    <p>
-                        ผมสนใจการทำงานของร่างกายมนุษย์และเชื่อว่าการเป็นแพทย์ไม่ใช่เพียงการรักษาโรค
-                        แต่คือการรับฟัง เข้าใจ และอยู่เคียงข้างผู้ป่วยในช่วงเวลาที่เขาต้องการความช่วยเหลือมากที่สุด
-                    </p>
-                </blockquote>
-            </div>
-
-
 
         <div class="nav-buttons">
             <a href="index.html" class="btn">&larr; ย้อนกลับ</a>
@@ -369,9 +385,8 @@
         function setupImageUpload(uploadId, previewId, storageKey) {
             const uploadInput = document.getElementById(uploadId);
             const previewImg = document.getElementById(previewId);
-            const uploadBtn = previewImg.nextElementSibling; // Assuming label is next sibling
+            const uploadBtn = previewImg.nextElementSibling;
 
-            // โหลดรูปภาพที่เคยบันทึกไว้
             const savedImage = localStorage.getItem(storageKey);
             if (savedImage) {
                 previewImg.src = savedImage;
@@ -388,7 +403,6 @@
                         previewImg.src = imageUrl;
                         previewImg.style.display = 'block';
                         uploadBtn.style.opacity = '0.5';
-                        // บันทึกลง LocalStorage
                         localStorage.setItem(storageKey, imageUrl);
                     };
                     reader.readAsDataURL(file);
