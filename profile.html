@@ -122,7 +122,7 @@
             box-shadow: 0 0 10px var(--surgical-cyan);
         }
 
-        /* Main Content - Profile */
+        /* Main Content - ปรับโครงสร้างแบบเดียวกับหน้าการศึกษา */
         .profile-section {
             display: flex;
             gap: 4rem;
@@ -130,71 +130,34 @@
             align-items: flex-start;
         }
 
-        .profile-info {
-            flex: 2;
-        }
-
-        .profile-info h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .profile-info h1 span {
-            color: var(--surgical-cyan);
-        }
-
-        .profile-info p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        /* ปรับปรุงระบบ Grid ป้องกันกล่องเบี้ยวและจัดเรียงแถวละ 3 กล่องอย่างสมดุล */
-        .profile-details {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-bottom: 2rem;
-        }
-
-        .detail-card {
-            background: var(--glass-bg);
-            padding: 1.25rem;
-            border-radius: 8px;
-            border: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .detail-card svg {
-            color: var(--surgical-cyan);
-            flex-shrink: 0;
-        }
-
-        .detail-card small {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            display: block;
-        }
-
-        .detail-card strong {
-            font-size: 1rem;
-            display: block;
-        }
-
-        .profile-image-zone {
+        /* ฝั่งซ้าย: สำหรับหัวข้อและรูปภาพ */
+        .profile-left-zone {
             flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .profile-left-zone h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        .profile-left-zone h1 span {
+            color: var(--surgical-cyan);
+        }
+
+        .profile-left-zone p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-top: 0.5rem;
         }
 
         .image-frame {
-            width: 300px;
-            height: 400px;
+            width: 100%;
+            max-width: 300px;
+            height: 380px;
             background: var(--glass-bg);
             border: 1px solid var(--surgical-cyan);
             border-radius: 10px;
@@ -230,11 +193,55 @@
             color: var(--midnight-navy);
         }
 
+        /* ฝั่งขวา: สำหรับกล่องข้อมูล พร้อมเส้นแบ่งด้านซ้าย */
+        .profile-right-zone {
+            flex: 2;
+            padding-left: 3.5rem;
+            border-left: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* เรียงกล่องข้อมูลแนวเดียวกับ Timeline หน้าประวัติการศึกษา */
+        .profile-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .detail-card {
+            background: var(--glass-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .detail-card svg {
+            color: var(--surgical-cyan);
+            flex-shrink: 0;
+        }
+
+        .detail-card small {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .detail-card strong {
+            font-size: 1.1rem;
+            display: block;
+        }
+
         /* Navigation */
         .nav-buttons {
             display: flex;
             justify-content: space-between;
-            margin-top: 2rem;
+            margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid var(--glass-border);
         }
@@ -273,29 +280,23 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .profile-details {
-                grid-template-columns: repeat(2, 1fr);
+            .profile-section {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            .profile-right-zone {
+                border-left: none;
+                padding-left: 0;
+                width: 100%;
+            }
+            .image-frame {
+                max-width: 100%;
             }
         }
 
-        @media (max-width: 768px) {
-            .profile-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .profile-info h1 {
-                font-size: 2.5rem;
-            }
-            .profile-image-zone {
-                order: -1;
-                margin-bottom: 2rem;
-            }
+        @media (max-width: 600px) {
             .profile-details {
                 grid-template-columns: 1fr;
-            }
-            blockquote {
-                text-align: left;
             }
         }
     </style>
@@ -304,7 +305,6 @@
     <!-- Background Animation -->
     <div class="lab-background">
         <div class="grid-overlay"></div>
-        <!-- SVG Icons for floating items -->
         <svg class="floating-item" style="top: 20%; left: 10%; width: 40px; height: 40px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h4l2-9 5 18 2-9h5"/></svg>
         <svg class="floating-item" style="top: 60%; left: 80%; width: 50px; height: 50px; animation-delay: -5s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
         <svg class="floating-item" style="top: 80%; left: 20%; width: 30px; height: 30px; animation-delay: -10s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
@@ -314,18 +314,30 @@
         <header>
             <a href="index.html" class="brand-mark">PORTFOLIO KOCH</a>
             <div class="status">
-               
-              
+             
             </div>
         </header>
 
         <main class="profile-section">
-            <div class="profile-info">
+            <!-- ฝั่งซ้าย: ชื่อหัวข้อแนวตั้ง + รูปภาพ -->
+            <div class="profile-left-zone">
+                <div>
 
-                <h1>ประวัติ<span>ส่วนตัว</span></h1>
-                <p>รู้จักตัวตน ความสนใจ และเหตุผลที่ทำให้ผมเลือกเดินบนเส้นทางสายแพทยศาสตร์</p>
+                    <h1>ประวัติ<span>ส่วนตัว</span></h1>
+                    <p>รู้จักตัวตน ความสนใจ และเหตุผลที่ทำให้ผมเลือกเดินบนเส้นทางสายแพทยศาสตร์</p>
+                </div>
 
-                <!-- กล่องข้อมูล 6 กล่อง จัดเรียงแบบ Grid 3x2 -->
+                <div class="image-frame">
+                    <img id="preview-profile" src="" alt="Profile Picture">
+                    <label class="upload-btn">
+                        อัปโหลดรูปภาพ
+                        <input type="file" id="upload-profile" accept="image/*" style="display: none;">
+                    </label>
+                </div>
+            </div>
+
+            <!-- ฝั่งขวา: กล่องข้อมูลรายละเอียด + ข้อความแรงบันดาลใจ -->
+            <div class="profile-right-zone">
                 <div class="profile-details">
                     <div class="detail-card">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.243a2 2 0 0 1 3.2 0L15.4 8a2 2 0 0 0 1.6 1.6l3.757 1.9a2 2 0 0 1 0 3.2l-3.757 1.9a2 2 0 0 0-1.6 1.6l-1.9 3.757a2 2 0 0 1-3.2 0L8.6 16a2 2 0 0 0-1.6-1.6L3.243 12.4a2 2 0 0 1 0-3.2L6.6 8a2 2 0 0 0 1.6-1.6z"/></svg>
@@ -345,32 +357,21 @@
                     </div>
                     <div class="detail-card">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/></svg>
-                        <div><small>กรุ๊ปเลือด</small><strong>B</strong></div>
+                        <div><small>กรุ๊ปเลือด</small><strong>A</strong></div>
                     </div>
-                    <div class="detail-card" style="border-color: var(--surgical-cyan);">
+                    <div class="detail-card" style="border-color: var(--surgical-cyan); background: rgba(54, 215, 255, 0.05);">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                        <div><small style="color: var(--surgical-cyan);">เป้าหมาย</small><strong>คณะแพทยศาสตร์</strong></div>
+                        <div><small style="color: var(--surgical-cyan);">เป้าหมาย</small><strong style="color: var(--surgical-cyan);">คณะแพทยศาสตร์</strong></div>
                     </div>
                 </div>
 
-                <blockquote style="background: var(--glass-bg); padding: 1.5rem; border-left: 3px solid var(--surgical-cyan); font-style: italic; color: var(--text-muted); margin-top: 1.5rem;">
-                    <small style="display: block; margin-bottom: 0.5rem; color: var(--surgical-cyan); font-style: normal; font-weight: 600;">เเรงจูงใจของฉัน</small>
+                <blockquote style="background: var(--glass-bg); padding: 1.5rem; border-left: 3px solid var(--surgical-cyan); font-style: italic; color: var(--text-muted); margin-top: 0.5rem;">
+                    <small style="display: block; margin-bottom: 0.5rem; color: var(--surgical-cyan); font-style: normal; font-weight: 600; letter-spacing: 0.5px;">แรงบันดาลใจของฉัน</small>
                     <p>
                         ผมสนใจการทำงานของร่างกายมนุษย์และเชื่อว่าการเป็นแพทย์ไม่ใช่เพียงการรักษาโรค
                         แต่คือการรับฟัง เข้าใจ และอยู่เคียงข้างผู้ป่วยในช่วงเวลาที่เขาต้องการความช่วยเหลือมากที่สุด
                     </p>
                 </blockquote>
-            </div>
-
-            <!-- ย้ายโซนรูปภาพมาอยู่ฝั่งขวาขนานกับเนื้อหาอย่างเหมาะสม -->
-            <div class="profile-image-zone">
-                <div class="image-frame">
-                    <img id="preview-profile" src="" alt="Profile Picture">
-                    <label class="upload-btn">
-                        อัปโหลดรูปภาพ
-                        <input type="file" id="upload-profile" accept="image/*" style="display: none;">
-                    </label>
-                </div>
             </div>
         </main>
 
@@ -381,7 +382,6 @@
     </div>
 
     <script>
-        // Script สำหรับจัดการอัปโหลดรูปภาพและบันทึกลง LocalStorage
         function setupImageUpload(uploadId, previewId, storageKey) {
             const uploadInput = document.getElementById(uploadId);
             const previewImg = document.getElementById(previewId);
