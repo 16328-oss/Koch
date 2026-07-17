@@ -168,11 +168,12 @@
             overflow: hidden;
         }
 
+        /* แก้ไขจุดที่ 1: เปลี่ยนจาก display: none เป็น block เพื่อให้รูปภาพเริ่มต้นแสดงผลได้ทันที */
         .award-image-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
+            display: block; 
         }
 
         .upload-btn {
@@ -280,71 +281,74 @@
     <div class="container">
         <header>
             <a href="index.html" class="brand-mark">PORTFOLIO KOCH</a>
-            <div class="status">
-              
-            </div>
+            <div class="status"></div>
         </header>
 
         <main class="award-section">
-
             <h1>รางวัลและ<span>ผลงาน</span></h1>
             <p>หลักฐานของความพยายาม การเรียนรู้ และการลงมือทำที่ค่อย ๆ พัฒนาผมให้พร้อมสำหรับเส้นทางสายแพทย์</p>
 
             <div class="award-grid">
+                <!-- การ์ดที่ 1 -->
                 <div class="award-card">
                     <div class="award-image-frame">
+                        <!-- แก้ไขจุดที่ 2: เปลี่ยน id ไม่ให้ซ้ำกัน เพื่อป้องกันการดึงรูปผิดพลาด -->
                         <img id="preview-award-1" src="images/IMG_0709.jpeg" alt="Award 1">
                         <label class="upload-btn">
                             อัปโหลดรูปภาพ
-                            <input type="file" id="upload-award-1" accept="images/IMG_0709.jpeg" style="display: none;">
+                            <!-- แก้ไขจุดที่ 3: ปรับคุณสมบัติ accept ของ input ให้ยอมรับไฟล์รูปภาพทั่วไป (image/*) -->
+                            <input type="file" id="upload-award-1" accept="image/*" style="display: none;">
                         </label>
                     </div>
                     <div class="award-content">
-                      
-                        
                         <h2>เข้าร่วมกิจกรรมฝึกอบรมในหัวข้อ "กิจกรรมเฝ้าระวังและป้องกันภัย 'รักแบบไหน ไม่ให้โดนแกง (Stop Grooming)'"</h2>
-                        <p>ป็นเกียรติบัตรที่มอบให้แก่ กช ทองธรรมชาติ สำหรับการเข้าร่วมกิจกรรมฝึกอบรมในหัวข้อ "กิจกรรมเฝ้าระวังและป้องกันภัย 'รักแบบไหน ไม่ให้โดนแกง (Stop Grooming)'" เมื่อวันที่ 4-5 กรกฎาคม พ.ศ. 2569 ณ โรงแรมเจปาร์ค ชลบุรี</p>
+                        <p>เป็นเกียรติบัตรที่มอบให้แก่ กช ทองธรรมชาติ สำหรับการเข้าร่วมกิจกรรมฝึกอบรมในหัวข้อ "กิจกรรมเฝ้าระวังและป้องกันภัย 'รักแบบไหน ไม่ให้โดนแกง (Stop Grooming)'" เมื่อวันที่ 4-5 กรกฎาคม พ.ศ. 2569 ณ โรงแรมเจปาร์ค ชลบุรี</p>
                     </div>
                 </div>
+
+                <!-- การ์ดที่ 2 -->
                 <div class="award-card">
                     <div class="award-image-frame">
-                        <img id="preview-award-1" src="images/IMG_0718.jpeg" alt="Award 2">
+                        <!-- แก้ไขจุดที่ 2: เปลี่ยน id เป็น preview-award-2 -->
+                        <img id="preview-award-2" src="images/IMG_0718.jpeg" alt="Award 2">
                         <label class="upload-btn">
                             อัปโหลดรูปภาพ
-                            <input type="file" id="upload-award-2" accept="images/IMG_0718.jpeg" style="display: none;">
+                            <input type="file" id="upload-award-2" accept="image/*" style="display: none;">
                         </label>
                     </div>
                     <div class="award-content">
-                        
                         <h2>ได้รับรางวัลชนะเลิศในการแข่งขัน "จรวดขวดน้ำ ประเภทยิงแม่น"</h2>
                         <p>เป็นเกียรติบัตรแสดงความยินดีที่ กช ทองธรรมชาติ ได้รับรางวัลชนะเลิศในการแข่งขัน "จรวดขวดน้ำ ประเภทยิงแม่น" ระดับชั้นมัธยมศึกษาปีที่ 5 ซึ่งจัดขึ้นในงานสัปดาห์วิทยาศาสตร์ เทคโนโลยี และคณิตศาสตร์ ประจำปีการศึกษา 2568 เมื่อวันที่ 19 สิงหาคม พ.ศ. 2568</p>
                     </div>
                 </div>
+
+                <!-- การ์ดที่ 3 -->
                 <div class="award-card">
                     <div class="award-image-frame">
-                         <img id="preview-award-1" src="images/IMG_0719.jpeg" alt="Award 3">
+                        <!-- แก้ไขจุดที่ 2: เปลี่ยน id เป็น preview-award-3 -->
+                        <img id="preview-award-3" src="images/IMG_0719.jpeg" alt="Award 3">
                         <label class="upload-btn">
                             อัปโหลดรูปภาพ
-                            <input type="file" id="upload-award-3" accept="images/IMG_0719.jpeg" style="display: none;">
+                            <input type="file" id="upload-award-3" accept="image/*" style="display: none;">
                         </label>
                     </div>
                     <div class="award-content">
-                        
                         <h2>เข้าร่วมการแข่งขัน "Spelling Bee Competition"</h2>
                         <p>เป็นเกียรติบัตรจากกลุ่มสาระการเรียนรู้ภาษาต่างประเทศ โรงเรียนพานทอง มอบให้แก่ Mr. Koch Thongtamchat นักเรียนชั้นมัธยมศึกษาปีที่ 5/1 สำหรับการเข้าร่วมการแข่งขัน "Spelling Bee Competition" เนื่องในโอกาสวัน International Day เมื่อวันที่ 19 ธันวาคม พ.ศ. 2568</p>
                     </div>
                 </div>
+
+                <!-- การ์ดที่ 4 -->
                 <div class="award-card">
                     <div class="award-image-frame">
-                       <img id="preview-award-1" src="images/IMG_0720.jpeg" alt="Award 4">
+                        <!-- แก้ไขจุดที่ 2: เปลี่ยน id เป็น preview-award-4 -->
+                        <img id="preview-award-4" src="images/IMG_0720.jpeg" alt="Award 4">
                         <label class="upload-btn">
                             อัปโหลดรูปภาพ
-                            <input type="file" id="upload-award-4" accept="image/IMG_0720.jpeg" style="display: none;">
+                            <input type="file" id="upload-award-4" accept="image/*" style="display: none;">
                         </label>
                     </div>
                     <div class="award-content">
-                       
-                        
                         <h2>การเข้าร่วมการแข่งขัน "English Reading and Speaking Skills Competition"</h2>
                         <p>เป็นเกียรติบัตรจากกลุ่มสาระการเรียนรู้ภาษาต่างประเทศ โรงเรียนพานทอง มอบให้แก่ Mister Koch Thongtamchat นักเรียนชั้นมัธยมศึกษาปีที่ 5/1 สำหรับการเข้าร่วมการแข่งขัน "English Reading and Speaking Skills Competition" เนื่องในโอกาสวัน International Day เมื่อวันที่ 19 ธันวาคม พ.ศ. 2568</p>
                     </div>
@@ -363,13 +367,12 @@
         function setupImageUpload(uploadId, previewId, storageKey) {
             const uploadInput = document.getElementById(uploadId);
             const previewImg = document.getElementById(previewId);
-            const uploadBtn = previewImg.nextElementSibling; // Assuming label is next sibling
+            const uploadBtn = previewImg.nextElementSibling; // ดึงปุ่ม label อัปโหลดรูปภาพ
 
-            // โหลดรูปภาพที่เคยบันทึกไว้
+            // ตรวจสอบว่าใน LocalStorage มีรูปภาพที่เคยอัปโหลดค้างไว้หรือไม่
             const savedImage = localStorage.getItem(storageKey);
             if (savedImage) {
                 previewImg.src = savedImage;
-                previewImg.style.display = 'block';
                 uploadBtn.style.opacity = '0.5';
             }
 
@@ -380,9 +383,8 @@
                     reader.onload = function(event) {
                         const imageUrl = event.target.result;
                         previewImg.src = imageUrl;
-                        previewImg.style.display = 'block';
                         uploadBtn.style.opacity = '0.5';
-                        // บันทึกลง LocalStorage
+                        // บันทึกความจำลง LocalStorage
                         localStorage.setItem(storageKey, imageUrl);
                     };
                     reader.readAsDataURL(file);
@@ -390,6 +392,7 @@
             });
         }
 
+        // เรียกใช้งานฟังก์ชันโดยจับคู่ ID ให้ถูกต้องตรงกันกับการ์ดแต่ละใบ
         setupImageUpload('upload-award-1', 'preview-award-1', 'portfolio-award-image-1');
         setupImageUpload('upload-award-2', 'preview-award-2', 'portfolio-award-image-2');
         setupImageUpload('upload-award-3', 'preview-award-3', 'portfolio-award-image-3');
