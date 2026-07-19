@@ -173,7 +173,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
+            /* แก้ไขจาก display: none; เป็น display: block; เพื่อให้รูปแสดงผล */
+            display: block; 
         }
 
         .upload-btn {
@@ -302,7 +303,6 @@
     </style>
 </head>
 <body>
-    <!-- Background Animation -->
     <div class="lab-background">
         <div class="grid-overlay"></div>
         <svg class="floating-item" style="top: 20%; left: 10%; width: 40px; height: 40px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h4l2-9 5 18 2-9h5"/></svg>
@@ -319,7 +319,6 @@
         </header>
 
         <main class="profile-section">
-            <!-- ฝั่งซ้าย: ชื่อหัวข้อแนวตั้ง + รูปภาพ -->
             <div class="profile-left-zone">
                 <div>
 
@@ -328,11 +327,10 @@
                 </div>
 
                 <div class="image-frame">
-                    <img  src="images/IMG_0747.jpeg" alt="Profile Picture">
+                    <img src="images/IMG_0747.jpeg" alt="Profile Picture">
                 </div>
             </div>
 
-            <!-- ฝั่งขวา: กล่องข้อมูลรายละเอียด + ข้อความแรงบันดาลใจ -->
             <div class="profile-right-zone">
                 <div class="profile-details">
                     <div class="detail-card">
@@ -376,36 +374,5 @@
             <a href="education.html" class="btn btn-primary">ถัดไป &rarr;</a>
         </div>
     </div>
-
-    <script>
-        function setupImageUpload(uploadId, previewId, storageKey) {
-            const uploadInput = document.getElementById(uploadId);
-            const previewImg = document.getElementById(previewId);
-            const uploadBtn = previewImg.nextElementSibling;
-
-            const savedImage = localStorage.getItem(storageKey);
-            if (savedImage) {
-                previewImg.src = savedImage;
-                previewImg.style.display = 'block';
-                uploadBtn.style.opacity = '0.5';
-            }
-
-            uploadInput.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        const imageUrl = event.target.result;
-                        previewImg.src = imageUrl;
-                        previewImg.style.display = 'block';
-                        uploadBtn.style.opacity = '0.5';
-                        localStorage.setItem(storageKey, imageUrl);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-        setupImageUpload('upload-profile', 'preview-profile', 'portfolio-profile-image');
-    </script>
 </body>
 </html>
